@@ -1,0 +1,48 @@
+<!doctype>
+<head>
+  <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/base/jquery-ui.css">
+  <link type="text/css" rel="stylesheet" href="assets/application.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.15/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="assets/application.js"></script>
+</head>
+<body>
+
+<div id="content">
+  <div id="lasers"></div>
+</div>
+
+<script type="text/javascript">
+
+var tv = 200;
+
+// instantiate lasers area!
+var lasers = new Rickshaw.Graph( {
+  element: document.getElementById("lasers"),
+  width: 600,
+  height: 200,
+  renderer: 'line',
+  series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
+    timeInterval: tv,
+    maxDataPoints: 100,
+    timeBase: new Date().getTime() / 1000
+  }) 
+} );
+
+lasers.render();
+
+var i = 0;
+var iv = setInterval( function() {
+
+  var data = { one: data_values[0] * 100};
+
+  data.two = data_values[1] * 100;
+
+  lasers.series.addData(data);
+  lasers.render();
+
+}, tv );
+
+</script>
+
+</body>
