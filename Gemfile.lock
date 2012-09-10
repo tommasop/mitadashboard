@@ -1,11 +1,11 @@
 GEM
   remote: http://rubygems.org/
-  remote: http://rubygems.org/
   specs:
     POpen4 (0.1.4)
       Platform (>= 0.4.0)
       open4
     Platform (0.4.0)
+    addressable (2.3.2)
     backrack (0.0.2)
       bundler (~> 1.1)
       rake (>= 0.8.7)
@@ -19,6 +19,14 @@ GEM
       eco-source
       execjs
     eco-source (1.1.0.rc.1)
+    em-websocket (0.3.8)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
+    eventmachine (1.0.0)
+    eventmachine (1.0.0-x86-mingw32)
+    eventmachine-tail (0.6.3)
+      eventmachine
+    eventmachine_httpserver (0.2.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
@@ -27,6 +35,7 @@ GEM
     rack (1.4.1)
     rake (0.9.2.2)
     sass (3.1.19)
+    serialport (1.1.0)
     sprockets (2.4.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -42,15 +51,21 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   backrack (~> 0.0.2)
-  bundler (~> 1.1.0)
+  bundler (~> 1.2.0)
   coffee-script (~> 2.2.0)
   eco (~> 1.0.0)
+  em-websocket
+  eventmachine (~> 1.0.0)
+  eventmachine-tail
+  eventmachine_httpserver
   rack (~> 1.4.1)
   rake
   sass (~> 3.1.15)
+  serialport
   sprockets (~> 2.4.0)
   uglifier (~> 1.2.4)
   yui-compressor (~> 0.9.6)
