@@ -1,7 +1,7 @@
 require 'serialport'
 require 'eventmachine'
 require 'em-websocket'
-require 'eventmachine-tail'
+require 'filewatch/tail'
 
 # Serial Port connection
 begin
@@ -77,12 +77,11 @@ EM.run {
   end
   puts "start WebSocket server - port 8786"
 
-  # Used to read Lasers and Accelerometers value from log file
-  EventMachine::file_tail("C:\\Tommaso\\mitadashboard\\tom") do |filetail, line|
-    # filetail is the 'EventMachine::FileTail' instance for this file.
-    # line is the line read from thefile.
-    # this block is invoked for every line read.
-    puts line
-    @@channel.push line
-  end 
+  tail = FileWatch::Tail.new(:stat_interval => 0.2)
+  tail.tail("C:\\Tommaso\\mitadashboard\\tom")
+  tail.subscribe do | path, data |
+    @@channel.push data.tr('"', '')
+    puts data.tr('"', '')
+  end
+
 }
