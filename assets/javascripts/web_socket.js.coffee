@@ -1,9 +1,9 @@
 class WSConnector
   constructor: (host)->
     if WebSocket?
-      window.socket = new WebSocket("ws://#{host}:8080")    
+      window.socket = new WebSocket("ws://#{host}:8786")    
     else
-      window.socket = new MozWebSocket("ws://#{host}:8080")
+      window.socket = new MozWebSocket("ws://#{host}:8786")
     
     window.socket.onopen = ->
       window.socket.send('Connesso')

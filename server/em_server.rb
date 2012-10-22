@@ -5,7 +5,7 @@ require 'filewatch/tail'
 
 # Serial Port connection
 begin
-  @@sp = SerialPort.new("COM6", 9600, 8, 1, SerialPort::NONE)
+  @@sp = SerialPort.new("/dev/master", 9600, 8, 1, SerialPort::NONE)
 rescue => e
   STDERR.puts 'cannot open serial port!'
   STDERR.puts e.to_s
