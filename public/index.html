@@ -62,7 +62,8 @@
                 <div class="row-fluid">
                   <div class="span12">
                     <p>Speed Gauge</p>
-                    <canvas id="gauge" />
+                    <div id="speed-textfield" style="font-size:36px"></div>
+                    <canvas id="gauge">
                   </div>
                 </div>
                 <div class="row-fluid">
@@ -101,14 +102,21 @@
     <script type="text/javascript">
       // Updater at time_interval
       var time_interval = 200;
-      var i = 0;
-      var iv = setInterval( function() {
-                                   var data = { one: data_values[0] * 100};
-                                   data.two = data_values[1] * 100;
-                                   lasers.series.addData(data);
-                                   lasers.render();
-                                 }, time_interval );
- //instantiate gauge area
+      // Lasers area instantiation and empty render!
+      var lasers = new Rickshaw.Graph({
+        element: document.getElementById("lasers"),
+        width: 600,
+        height: 200,
+        renderer: 'line',
+        series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
+          timeInterval: time_interval,
+          maxDataPoints: 100,
+          timeBase: new Date().getTime() / 1000 })
+      });
+      lasers.render();
+
+
+       //instantiate gauge area
       var gauge_opts = {
              lines: 12, // The number of lines to draw
              angle: 0, // The length of each line
@@ -125,9 +133,23 @@
       };
       var target = document.getElementById('gauge'); // your canvas element
       var gauge = new Gauge(target).setOptions(gauge_opts); // create sexy gauge!
-      gauge.maxValue = 3000; // set max gauge value
+      gauge.maxValue = 180; // set max gauge value
+      gauge.setTextField(document.getElementById("speed-textfield"));
       gauge.animationSpeed = 4; // set animation speed (32 is default value)
-      gauge.set(2400); // set actual value
+      gauge.set(90); // set actual value
+      
+      // Data updater at time_interval
+      var i = 0;
+      var iv = setInterval( function() {
+                                   var data = { one: data_values[0] * 100};
+                                   data.two = data_values[1] * 100;
+                                   // Update laser values
+                                   lasers.series.addData(data);
+                                   lasers.render();
+                                   // Update speed value
+                                   gauge.set(data_values[3]);
+                                 }, time_interval );
+
     </script>
 
   </body>

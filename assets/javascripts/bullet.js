@@ -1,16 +1,3 @@
-// Lasers area instantiation and empty render!
-var lasers = new Rickshaw.Graph({
-             element: document.getElementById("lasers"),
-             width: 600,
-             height: 200,
-             renderer: 'line',
-             series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
-                     timeInterval: time_interval,
-                     maxDataPoints: 100,
-                     timeBase: new Date().getTime() / 1000 })
-                                });
-lasers.render();
-
 // Bulleted Graphs instantiation and rendering
 var bull_width = 380,
     bull_height = 50,
@@ -20,7 +7,7 @@ var bull_chart = bulletChart()
     .width(bull_width - bull_margin.right - bull_margin.left)
     .height(bull_height - bull_margin.top - bull_margin.bottom);
 
-d3.json("/bullets.json", function(data) {
+d3.json("/assets/bullets.json", function(data) {
 
   var vis = d3.select("#bullet_chart_1").selectAll("svg")
       .data(data)
@@ -30,7 +17,7 @@ d3.json("/bullets.json", function(data) {
       .attr("height", bull_height)
     .append("g")
       .attr("transform", "translate(" + bull_margin.left + "," + bull_margin.top + ")")
-      .call(chart);
+      .call(bull_chart);
 
   var title = vis.append("g")
       .attr("text-anchor", "end")
@@ -47,7 +34,7 @@ d3.json("/bullets.json", function(data) {
 
   chart.duration(200);
   window.transition = function() {
-    vis.datum(randomize).call(chart);
+    vis.datum(randomize).call(bull_chart);
   };
 });
 
