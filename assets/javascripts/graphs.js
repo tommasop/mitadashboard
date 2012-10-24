@@ -1,12 +1,26 @@
-var bull_width = 960,
+// Lasers area instantiation and empty render!
+var lasers = new Rickshaw.Graph({
+             element: document.getElementById("lasers"),
+             width: 600,
+             height: 200,
+             renderer: 'line',
+             series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
+                     timeInterval: time_interval,
+                     maxDataPoints: 100,
+                     timeBase: new Date().getTime() / 1000 })
+                                });
+lasers.render();
+
+// Bulleted Graphs instantiation and rendering
+var bull_width = 380,
     bull_height = 50,
-    bull_margin = {top: 5, right: 40, bottom: 20, left: 120};
+    bull_margin = {top: 5, right: 0, bottom: 20, left: 0};
 
 var bull_chart = bulletChart()
     .width(bull_width - bull_margin.right - bull_margin.left)
     .height(bull_height - bull_margin.top - bull_margin.bottom);
 
-d3.json("bullets.json", function(data) {
+d3.json("/bullets.json", function(data) {
 
   var vis = d3.select("#bullet_chart_1").selectAll("svg")
       .data(data)
@@ -31,7 +45,7 @@ d3.json("bullets.json", function(data) {
       .attr("dy", "1em")
       .text(function(d) { return d.subtitle; });
 
-  chart.duration(1000);
+  chart.duration(200);
   window.transition = function() {
     vis.datum(randomize).call(chart);
   };

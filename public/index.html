@@ -99,34 +99,16 @@
     </div>
 
     <script type="text/javascript">
-      var tv = 200;
-      // instantiate lasers area!
-      var lasers = new Rickshaw.Graph({
-                                       element: document.getElementById("lasers"),
-                                       width: 600,
-                                       height: 200,
-                                       renderer: 'line',
-                                       series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
-                                                                                           timeInterval: tv,
-                                                                                           maxDataPoints: 100,
-                                                                                           timeBase: new Date().getTime() / 1000
-                                                                                           })
-                                       });
-      lasers.render();
-
+      // Updater at time_interval
+      var time_interval = 200;
       var i = 0;
       var iv = setInterval( function() {
-
-      var data = { one: data_values[0] * 100};
-
-      data.two = data_values[1] * 100;
-
-      lasers.series.addData(data);
-      lasers.render();
-
-      }, tv );
-      
-      //instantiate gauge area
+                                   var data = { one: data_values[0] * 100};
+                                   data.two = data_values[1] * 100;
+                                   lasers.series.addData(data);
+                                   lasers.render();
+                                 }, time_interval );
+ //instantiate gauge area
       var gauge_opts = {
              lines: 12, // The number of lines to draw
              angle: 0, // The length of each line
