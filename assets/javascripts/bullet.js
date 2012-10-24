@@ -1,7 +1,7 @@
 // Bulleted Graphs instantiation and rendering
-var bull_width = 380,
+var bull_width = 600,
     bull_height = 50,
-    bull_margin = {top: 5, right: 0, bottom: 20, left: 0};
+    bull_margin = {top: 10, right: 0, bottom: 20, left: 60};
 
 var bull_chart = bulletChart()
     .width(bull_width - bull_margin.right - bull_margin.left)
@@ -32,7 +32,7 @@ d3.json("/assets/bullets.json", function(data) {
       .attr("dy", "1em")
       .text(function(d) { return d.subtitle; });
 
-  chart.duration(200);
+  bull_chart.duration(200);
   window.transition = function() {
     vis.datum(randomize).call(bull_chart);
   };
