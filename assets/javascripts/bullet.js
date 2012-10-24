@@ -1,7 +1,7 @@
 // Bulleted Graphs instantiation and rendering
 var bull_width = 600,
     bull_height = 50,
-    bull_margin = {top: 10, right: 0, bottom: 20, left: 60};
+    bull_margin = {top: 5, right: 40, bottom: 20, left: 120};
 
 var bull_chart = bulletChart()
     .width(bull_width - bull_margin.right - bull_margin.left)
