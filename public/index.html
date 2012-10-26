@@ -29,7 +29,7 @@
           <a class="brand" href="#"></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="#contact"><i class="icon-dashboard icon-large icon-white"></i>Dashboard</a></li>
+              <li class="active"><a href="#contact"><i class="icon-dashboard icon-large icon-white"></i>Dashboard</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -40,8 +40,9 @@
         <div class="span6">
            <div class="row-fluid">
               <div class="span12">
+                <p class="label">GPS Data</p>
                 <div id="gps">
-                  <i class="icon-rss"></i> GPS
+                  <i class="icon-rss"></i>
                 </div>
               </div>
             </div>
@@ -61,38 +62,38 @@
               <div class="span6">
                 <div class="row-fluid">
                   <div class="span12">
-                    <p>Speed</p>
+                    <p class="label">Speed</p>
                     <div id="speed-textfield" style="font-size:36px"></div><div id="speed-unit">km/h</div>
                     <canvas id="gauge">
                   </div>
                 </div>
                 <div class="row-fluid">
                   <div class="span12">
-                    <p>Laser Scanner</p>
+                    <p class="label">Laser Scanner</p>
                   </div>
                 </div>
               </div>
            </div>
         </div>    
         <div class="span6">
+          <p class="label">Camera</p>
           <img src="http://placehold.it/640x300" class="img-rounded">
         </div>    
       </div>
       <div class="row-fluid">
         <div class="span8">
-          <div id="content">
-            <div id="lasers"></div>
-          </div>
+          <p class="label">Lasers</p>
+          <div id="lasers"></div>
         </div>
         <div class="span4">
-          <p>Accelerometers</p>
+          <p class="label">Accelerometers</p>
           <div id="bullet_chart_1">
           </div>
         </div>
       </div>
       <div class="row-fluid">
         <div class="span12">
-          <p>Buttons</p>
+          <p class="label">Log Buttons</p>
         </div>
       </div>
     </div>
