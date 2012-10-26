@@ -1,5 +1,5 @@
 // Bulleted Graphs instantiation and rendering
-var bull_width = 600,
+var bull_width = 382,
     bull_height = 50,
     bull_margin = {top: 5, right: 40, bottom: 20, left: 120};
 

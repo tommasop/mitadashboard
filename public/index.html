@@ -29,7 +29,7 @@
           <a class="brand" href="#"></a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="#contact">Dashboard</a></li>
+              <li><a href="#contact"><i class="icon-dashboard icon-large icon-white"></i>Dashboard</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -49,12 +49,12 @@
               <div class="span6">
                 <div class="row-fluid">
                   <div class="span12">
-                    <p>Button 1</p>
+                    <button class="btn btn-large btn-primary" type="button">Start Acquisition</button>
                   </div>
                 </div>
                 <div class="row-fluid">
                   <div class="span12">
-                    <p>Button 1</p>
+                    <button class="btn btn-large btn-primary" type="button">New File</button>
                   </div>
                 </div>
               </div>
@@ -79,12 +79,12 @@
         </div>    
       </div>
       <div class="row-fluid">
-        <div class="span6">
+        <div class="span8">
           <div id="content">
             <div id="lasers"></div>
           </div>
         </div>
-        <div class="span6">
+        <div class="span4">
           <p>Accelerometers</p>
           <div id="bullet_chart_1">
           </div>
@@ -103,7 +103,7 @@
       // Lasers area instantiation and empty render!
       var lasers = new Rickshaw.Graph({
         element: document.getElementById("lasers"),
-        width: 600,
+        width: 795,
         height: 200,
         renderer: 'line',
         series: new Rickshaw.Series.FixedDuration([{ name: 'one' }], undefined, {
