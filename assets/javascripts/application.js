@@ -4,4 +4,6 @@
 //= require rickshaw.min
 //= require gauge.min
 //= require bullet
+//= require swfobject
 //= require web_socket
+//= require my_web_socket
